@@ -90,7 +90,7 @@ export default function App() {
            grid grid-rows-6"
 					>
 						<h1 className="text-5xl font-bold text-center uppercase mt-5">
-							🏆
+							🏆 optime!
 						</h1>
 
 						<h1 className="  font-bold text-center uppercase ">
@@ -111,7 +111,10 @@ export default function App() {
 								<div
 									className="text-md lowercase mt-5 text-center  bg-green-500  text-white cursor-pointer rounded-full p-2  "
 									onClick={(e: any) => {
-										navigator.clipboard.writeText(resultsStrings.join("\n"));
+										navigator.clipboard.writeText(
+											`🕊 Verba ${state.rows.length}/6 \n` +
+												resultsStrings.join("\n")
+										);
 										e.target.innerHTML = "Copied!";
 									}}
 								>
@@ -129,7 +132,7 @@ export default function App() {
            grid grid-rows-4"
 					>
 						<h1 className="text-5xl font-bold text-center uppercase mt-5">
-							💀
+							💀 o male!
 						</h1>
 
 						<h1 className="text-6xl font-bold text-center uppercase mt-10 animate-bounce text-green-500">

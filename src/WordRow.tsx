@@ -12,10 +12,10 @@ export default function WordRow({
 	className = "",
 }: WordRowProps) {
 	const lettersRemaining = WORD_LENGTH - word.length;
-	const letters = word.split("").concat(Array(lettersRemaining).fill(""));
+	const letters = word.split("").concat(Array(lettersRemaining).fill(" "));
 
 	return (
-		<div className={`grid grid-cols-5 gap-2 ${className}`}>
+		<div className={`grid grid-cols-5 gap-1 ${className}`}>
 			{letters.map((char, index) => (
 				<CharacterBox key={index} value={char} state={result[index]} />
 			))}
@@ -35,7 +35,7 @@ function CharacterBox({ value, state }: CharacterBoxProps) {
 
 	return (
 		<span
-			className={`border-2 m-1 p-2 uppercase text-white  text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
+			className={`border-2  m-1 p-2 uppercase text-white  text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
 		>
 			{value}
 		</span>

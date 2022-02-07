@@ -30,7 +30,7 @@ interface CharacterBoxProps {
 function CharacterBox({ value, state }: CharacterBoxProps) {
 	const stateStyles =
 		state == null
-			? "border-gray-600 text-black"
+			? "border-gray-600 text-white"
 			: `${characterStateStyles[state]} text-white`;
 
 	return (

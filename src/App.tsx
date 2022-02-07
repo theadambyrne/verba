@@ -61,8 +61,8 @@ export default function App() {
 							result={word.result}
 							className={
 								showInvalidGuess && index === currentRow
-									? "animate-bounce duration-75"
-									: " "
+									? "animate-bounce duration-75 text-white"
+									: " text-white"
 							}
 						/>
 					))}

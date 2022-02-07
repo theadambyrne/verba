@@ -72,7 +72,7 @@ export default function App() {
 					<div
 						role="modal"
 						className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
-            w-12/12 h-2/3 p-6 left-0 right-0 mx-auto top-20
+            w-12/12 h-2/3 p-8 left-0 right-0 mx-auto top-20
            grid grid-rows-4"
 					>
 						<h1 className="text-8xl font-bold text-center uppercase mt-5">
@@ -103,7 +103,7 @@ export default function App() {
 					<div
 						role="modal"
 						className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
-            w-12/12 h-2/3 p-6 left-0 right-0 mx-auto top-20
+            w-12/12 h-2/3 p-8 left-0 right-0 mx-auto top-20
            grid grid-rows-4"
 					>
 						<h1 className="text-8xl font-bold text-center uppercase mt-5">

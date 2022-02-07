@@ -75,6 +75,6 @@ export const useStore = create<StoreState>(
 	)
 );
 
-useStore.persist.clearStorage();
+// useStore.persist.clearStorage();
 
 export const answerSelector = (state: StoreState) => state.answer;

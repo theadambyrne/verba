@@ -49,12 +49,25 @@ export default function App() {
 
 	return (
 		<div className="mx-auto w-96 relative h-screen ">
-			<header className="p-5">
-				<h1 className="text-5xl font-bold text-center uppercase">🕊 Verba</h1>
+			<header className="m-5">
+				<h1 className="text-4xl font-bold text-center uppercase">🕊 Verba</h1>
+				<details className="text-center m-2">
+					<summary>How to Play</summary>
+					<ul className="text-left p-5">
+						<li>Guess today's Latin word!</li>
+						<li>Use the keyboard below or your own.</li>
+					</ul>
+					<ul className="text-left p-5">
+						<li>⬛️ Letter is not in the word</li>
+						<li>🟨 Letter in the wrong place</li>
+						<li>🟩 Letter is correct</li>
+						<li>❌ The word will bounce if invalid</li>
+					</ul>
+				</details>
 			</header>
 
 			<div>
-				<main className="grid grid-rows-6 gap-2 my-2">
+				<main className="grid grid-rows-6 gap-1 my-1">
 					{rows.map((word, index) => (
 						<WordRow
 							key={index}
@@ -139,7 +152,7 @@ export default function App() {
 									})}
 								</div>
 								<div
-									className="  text-md lowercase mt-5 text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
+									className="text-md lowercase mt-5 text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
 									onClick={(e: any) => {
 										navigator.clipboard.writeText(resultsStrings.join("\n"));
 										e.target.innerHTML = "Copied!";

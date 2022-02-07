@@ -29,7 +29,7 @@ export default function Keyboard({ onClick: onClickProps }: KeyboardProps) {
 						if (letterState) {
 							styles += " text-white px-1 " + letterState;
 						} else if (key !== "") {
-							styles += " bg-gray-400";
+							styles += " bg-gray-500";
 						}
 
 						if (key === "") {
@@ -51,7 +51,7 @@ export default function Keyboard({ onClick: onClickProps }: KeyboardProps) {
 }
 
 const keyStateStyles = {
-	[LetterState.Miss]: "bg-gray-600  ",
+	[LetterState.Miss]: "bg-gray-700  ",
 	[LetterState.Present]: "bg-yellow-500",
 	[LetterState.Match]: "bg-green-500",
 };

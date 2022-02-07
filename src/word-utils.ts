@@ -71,10 +71,16 @@ export function computeGuess(
 
 export function getRandomWord(): string {
 	const wb: any = wordBank;
-	const date: string = new Date().toLocaleString().split(",")[0];
-	return wb[date];
+	return String(wb[daysSince()]).toLowerCase();
+}
+
+function daysSince() {
+	let current: Date = new Date();
+	let previous: Date = new Date("02/07/2022");
+	return Math.ceil((Number(previous) - Number(current)) / 86400000);
 }
 
 export function isValidWord(word: string): boolean {
-	return true;
+	const wb: any = wordBank;
+	return wb.includes(word);
 }

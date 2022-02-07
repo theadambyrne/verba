@@ -30,12 +30,12 @@ interface CharacterBoxProps {
 function CharacterBox({ value, state }: CharacterBoxProps) {
 	const stateStyles =
 		state == null
-			? "border-gray-500 text-black"
+			? "border-gray-600 text-black"
 			: `${characterStateStyles[state]} text-white`;
 
 	return (
 		<span
-			className={`border-2 m-1 p-2 uppercase text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
+			className={`border-2 m-1 p-2 uppercase text-white  text-center font-extrabold text-4xl before:inline-block before:content-['_'] ${stateStyles} `}
 		>
 			{value}
 		</span>
@@ -43,7 +43,7 @@ function CharacterBox({ value, state }: CharacterBoxProps) {
 }
 
 const characterStateStyles = {
-	[LetterState.Miss]: "border-gray-500 bg-gray-500",
-	[LetterState.Present]: "border-yellow-500 bg-yellow-500",
-	[LetterState.Match]: "border-green-500 bg-green-500",
+	[LetterState.Miss]: "border-gray-700 bg-gray-700 ",
+	[LetterState.Present]: "border-yellow-500 bg-yellow-500 ",
+	[LetterState.Match]: "border-green-500 bg-green-500  ",
 };

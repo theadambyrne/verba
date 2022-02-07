@@ -35,7 +35,6 @@ export default function App() {
 	}, [guess]);
 
 	const isGameOver = state.gameState !== "playing";
-	const isWon = state.gameState;
 	let rows = [...state.rows];
 
 	let currentRow = 0;
@@ -49,41 +48,86 @@ export default function App() {
 
 	return (
 		<div className="mx-auto  w-96 relative h-screen ">
-			<header className="border-b border-black py-4">
-				<h1 className="text-3xl font-bold text-center uppercase">🏛 Verba</h1>
-
-				<div className="text-md text-black text-center mt-5">
-					<details>
-						<summary>How to play</summary>
-						<ul>
-							<li>🟩 correct position</li>
-							<li>🟨 incorrect position</li>
-							<li>⬛ incorrect letter</li>
-						</ul>
-					</details>
-				</div>
+			<header className="p-10">
+				<h1 className="text-5xl font-bold text-center uppercase">🏛 Verba</h1>
 			</header>
 
-			<main className="grid grid-rows-6 gap-2 my-2">
-				{rows.map((word, index) => (
-					<WordRow
-						key={index}
-						word={word.guess}
-						result={word.result}
-						className={
-							showInvalidGuess && index === currentRow ? "animate-bounce" : ""
-						}
-					/>
-				))}
-			</main>
+			<div>
+				<main className="grid grid-rows-6 gap-2 my-2">
+					{rows.map((word, index) => (
+						<WordRow
+							key={index}
+							word={word.guess}
+							result={word.result}
+							className={
+								showInvalidGuess && index === currentRow
+									? "animate-bounce duration-75"
+									: " "
+							}
+						/>
+					))}
+				</main>
 
-			<Keyboard
-				onClick={(key) => {
-					if (!isGameOver) {
-						addGuessLetter(key);
-					}
-				}}
-			/>
+				{state.gameState === "won" && (
+					<div
+						role="modal"
+						className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
+            w-12/12 h-2/3 p-6 left-0 right-0 mx-auto top-20
+           grid grid-rows-4"
+					>
+						<h1 className="text-8xl font-bold text-center uppercase mt-5">
+							🏆
+						</h1>
+
+						<h1 className="text-5xl font-italic text-center uppercase mt-5">
+							Optime!
+						</h1>
+
+						<h1 className="text-2xl font-bold text-center uppercase mt-5">
+							<div className="grid grid-rows-6 gap-2 my-2">
+								{state.rows.length}/6
+								{state.rows.map((foo: any) => {
+									const { guess, result } = foo;
+									const options = ["⬛️", "🟨", "🟩"];
+									let resultString = "";
+									result.map((r: number) => {
+										resultString = resultString.concat(options[r]);
+									});
+									return <div>{resultString}</div>;
+								})}
+							</div>
+						</h1>
+					</div>
+				)}
+				{state.gameState === "lost" && (
+					<div
+						role="modal"
+						className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
+            w-12/12 h-2/3 p-6 left-0 right-0 mx-auto top-20
+           grid grid-rows-4"
+					>
+						<h1 className="text-8xl font-bold text-center uppercase mt-5">
+							💀
+						</h1>
+
+						<h1 className="text-5xl font-italic text-center uppercase mt-5">
+							O male!
+						</h1>
+
+						<h1 className="text-6xl font-bold text-center uppercase mt-10 animate-bounce text-green-500">
+							{state.answer}
+						</h1>
+					</div>
+				)}
+
+				<Keyboard
+					onClick={(key) => {
+						if (!isGameOver) {
+							addGuessLetter(key);
+						}
+					}}
+				/>
+			</div>
 		</div>
 	);
 }
@@ -121,7 +165,9 @@ function useGuess(): [
 
 	const onKeyDown = (e: KeyboardEvent) => {
 		let letter = e.key;
-		addGuessLetter(letter);
+		if (/[a-z]/.test(letter)) {
+			addGuessLetter(letter);
+		}
 	};
 
 	useEffect(() => {

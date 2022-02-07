@@ -165,13 +165,15 @@ export default function App() {
 					</div>
 				)}
 
-				<Keyboard
-					onClick={(key) => {
-						if (!isGameOver) {
-							addGuessLetter(key);
-						}
-					}}
-				/>
+				{state.gameState === "playing" && (
+					<Keyboard
+						onClick={(key) => {
+							if (!isGameOver) {
+								addGuessLetter(key);
+							}
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);

@@ -47,8 +47,8 @@ export default function App() {
 	rows = rows.concat(Array(guessesRemaining).fill(""));
 
 	return (
-		<div className="mx-auto  w-96 relative h-screen ">
-			<header className="p-10">
+		<div className="mx-auto w-96 relative h-screen ">
+			<header className="p-5">
 				<h1 className="text-5xl font-bold text-center uppercase">🏛 Verba</h1>
 			</header>
 

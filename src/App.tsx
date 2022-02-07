@@ -41,6 +41,7 @@ export default function App() {
 	if (rows.length < NUMBER_OF_GUESSES) {
 		currentRow = rows.push({ guess }) - 1;
 	}
+	let resultsStrings: string[] = ["🕊 Verba"];
 
 	const guessesRemaining = NUMBER_OF_GUESSES - rows.length;
 
@@ -49,7 +50,7 @@ export default function App() {
 	return (
 		<div className="mx-auto w-96 relative h-screen ">
 			<header className="p-5">
-				<h1 className="text-5xl font-bold text-center uppercase">🏛 Verba</h1>
+				<h1 className="text-5xl font-bold text-center uppercase">🕊 Verba</h1>
 			</header>
 
 			<div>
@@ -73,28 +74,36 @@ export default function App() {
 						role="modal"
 						className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
             w-12/12 h-2/3 p-8 left-0 right-0 mx-auto top-20
-           grid grid-rows-4"
+           grid grid-rows-6"
 					>
-						<h1 className="text-8xl font-bold text-center uppercase mt-5">
+						<h1 className="text-5xl font-bold text-center uppercase mt-5">
 							🏆
 						</h1>
 
-						<h1 className="text-5xl font-italic text-center uppercase mt-5">
-							Optime!
-						</h1>
-
-						<h1 className="text-2xl font-bold text-center uppercase mt-5">
-							<div className="grid grid-rows-6 gap-2 my-2">
+						<h1 className="  font-bold text-center uppercase ">
+							<div className="grid grid-rows-8 gap-2 my-2">
 								{state.rows.length}/6
-								{state.rows.map((foo: any) => {
-									const { guess, result } = foo;
-									const options = ["⬛️", "🟨", "🟩"];
-									let resultString = "";
-									result.map((r: number) => {
-										resultString = resultString.concat(options[r]);
-									});
-									return <div>{resultString}</div>;
-								})}
+								<div>
+									{state.rows.map((foo: any) => {
+										const { guess, result } = foo;
+										const options = ["⬛️", "🟨", "🟩"];
+										let resultString = "";
+										result.map((r: number) => {
+											resultString = resultString.concat(options[r]);
+										});
+										resultsStrings.push(resultString);
+										return <div>{resultString}</div>;
+									})}
+								</div>
+								<div
+									className="text-md lowercase mt-5 text-center  bg-green-500  text-white cursor-pointer rounded-full p-2  "
+									onClick={(e: any) => {
+										navigator.clipboard.writeText(resultsStrings.join("\n"));
+										e.target.innerHTML = "Copied!";
+									}}
+								>
+									Copy Result
+								</div>
 							</div>
 						</h1>
 					</div>
@@ -106,16 +115,39 @@ export default function App() {
             w-12/12 h-2/3 p-8 left-0 right-0 mx-auto top-20
            grid grid-rows-4"
 					>
-						<h1 className="text-8xl font-bold text-center uppercase mt-5">
+						<h1 className="text-5xl font-bold text-center uppercase mt-5">
 							💀
-						</h1>
-
-						<h1 className="text-5xl font-italic text-center uppercase mt-5">
-							O male!
 						</h1>
 
 						<h1 className="text-6xl font-bold text-center uppercase mt-10 animate-bounce text-green-500">
 							{state.answer}
+						</h1>
+
+						<h1 className="  font-bold text-center uppercase ">
+							<div className="grid grid-rows-8 gap-2 my-2">
+								{state.rows.length}/6
+								<div>
+									{state.rows.map((foo: any) => {
+										const { guess, result } = foo;
+										const options = ["⬛️", "🟨", "🟩"];
+										let resultString = "";
+										result.map((r: number) => {
+											resultString = resultString.concat(options[r]);
+										});
+										resultsStrings.push(resultString);
+										return <div>{resultString}</div>;
+									})}
+								</div>
+								<div
+									className="  text-md lowercase mt-5 text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
+									onClick={(e: any) => {
+										navigator.clipboard.writeText(resultsStrings.join("\n"));
+										e.target.innerHTML = "Copied!";
+									}}
+								>
+									Copy Result
+								</div>
+							</div>
 						</h1>
 					</div>
 				)}

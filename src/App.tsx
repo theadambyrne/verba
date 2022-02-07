@@ -41,7 +41,7 @@ export default function App() {
 	if (rows.length < NUMBER_OF_GUESSES) {
 		currentRow = rows.push({ guess }) - 1;
 	}
-	let resultsStrings: string[] = ["🕊 Verba"];
+	let resultsStrings: string[] = [];
 
 	const guessesRemaining = NUMBER_OF_GUESSES - rows.length;
 
@@ -154,7 +154,10 @@ export default function App() {
 								<div
 									className="text-md lowercase mt-5 text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
 									onClick={(e: any) => {
-										navigator.clipboard.writeText(resultsStrings.join("\n"));
+										navigator.clipboard.writeText(
+											`🕊 Verba ${state.rows.length}/6 \n` +
+												resultsStrings.join("\n")
+										);
 										e.target.innerHTML = "Copied!";
 									}}
 								>

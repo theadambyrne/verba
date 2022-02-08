@@ -1,7 +1,8 @@
+import { devNull } from "os";
 import { useEffect, useRef, useState } from "react";
 import Keyboard from "./Keyboard";
 import { useStore, NUMBER_OF_GUESSES, WORD_LENGTH } from "./store";
-import { getRandomWord, isValidWord } from "./word-utils";
+import { getRandomWord, isValidWord, LetterState } from "./word-utils";
 import WordRow from "./WordRow";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
 		state.answer = getRandomWord();
 		state.rows = [];
 		state.gameState = "playing";
+		state.keyboardLetterState = {};
 	}
 	useEffect(() => {
 		if (!isGameOver) {

@@ -20,12 +20,12 @@ export default function App() {
 
 	const addGuess = useStore((s) => s.addGuess);
 	const previousGuess = usePrevious(guess);
+	if (state.answer !== getRandomWord()) {
+		state.answer = getRandomWord();
+		state.rows = [];
+		state.gameState = "playing";
+	}
 	useEffect(() => {
-		if (state.answer !== getRandomWord()) {
-			state.answer = getRandomWord();
-			state.rows = [];
-			state.gameState = "playing";
-		}
 		if (!isGameOver) {
 			if (guess.length === 0 && previousGuess?.length === WORD_LENGTH) {
 				if (isValidWord(previousGuess)) {

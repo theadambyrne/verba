@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Keyboard from "./Keyboard";
 import { useStore, NUMBER_OF_GUESSES, WORD_LENGTH } from "./store";
-import { isValidWord } from "./word-utils";
+import { getRandomWord, isValidWord } from "./word-utils";
 import WordRow from "./WordRow";
 
 export default function App() {
@@ -81,7 +81,6 @@ export default function App() {
 						/>
 					))}
 				</main>
-
 				{state.gameState === "won" && (
 					<div
 						role="modal"
@@ -105,7 +104,7 @@ export default function App() {
 											resultString = resultString.concat(options[r]);
 										});
 										resultsStrings.push(resultString);
-										return <div>{resultString}</div>;
+										return <div key={resultString}>{resultString}</div>;
 									})}
 								</div>
 								<div

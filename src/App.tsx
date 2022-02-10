@@ -115,7 +115,7 @@ export default function App() {
 							<h1 className="text-5xl font-bold text-center uppercase p-2">
 								How to play
 							</h1>
-							<div className="grid grid-rows-8 gap-2 my-2">
+							<div className="grid grid-rows-8 gap-2  mt-5">
 								<div>
 									<p className="text-left mt-5">
 										Guess the VERBA in 6 tries. Each guess must be a valid 5

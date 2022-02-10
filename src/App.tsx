@@ -84,7 +84,9 @@ export default function App() {
 							></path>
 						</svg>
 					</span>
-					<h1 className="text-4xl font-bold text-center uppercase">Verba</h1>
+					<h1 className="text-4xl p-2 font-bold text-center uppercase">
+						Verba
+					</h1>
 					<span className="p-2">&nbsp;</span>
 				</header>
 

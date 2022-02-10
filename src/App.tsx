@@ -112,7 +112,7 @@ export default function App() {
             w-12/12 h-2/3 p-8 left-0 right-0 mx-auto top-20
            grid grid-rows-6"
 						>
-							<h1 className="text-5xl font-bold text-center uppercase mt-5">
+							<h1 className="text-5xl font-bold text-center uppercase p-2">
 								How to play
 							</h1>
 							<div className="grid grid-rows-8 gap-2 my-2">

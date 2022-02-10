@@ -40,7 +40,7 @@ export default function Keyboard({ onClick: onClickProps }: KeyboardProps) {
 
 						return (
 							<button onClick={onClick} key={key + index} className={styles}>
-								{key === "delete" ? backspace : key}
+								{key === "←" ? backspace : key}
 							</button>
 						);
 					})}
@@ -59,7 +59,7 @@ const keyStateStyles = {
 const keyboardKeys = [
 	["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
 	["", "a", "s", "d", "f", "g", "h", "j", "k", "l", ""],
-	["Enter", "z", "x", "c", "v", "b", "n", "m", "Backspace"],
+	["Enter", "z", "x", "c", "v", "b", "n", "m", "←"],
 ];
 
 const backspace = (

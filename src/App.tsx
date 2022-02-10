@@ -67,7 +67,7 @@ export default function App() {
 			<div className="p-2">
 				<header className="grid grid-cols-3 border-b border-1 border-gray-600">
 					<span
-						className="p-2 text-center"
+						className="p-4 text-center"
 						onClick={() => {
 							setHelpScreen(true);
 						}}

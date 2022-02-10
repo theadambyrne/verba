@@ -64,8 +64,8 @@ export default function App() {
 
 	return (
 		<div className="mx-auto w-96 relative h-screen ">
-			<div className="m-5">
-				<header className="grid grid-cols-3">
+			<div className="p-2">
+				<header className="grid grid-cols-3 border-b border-1 border-gray-600">
 					<span
 						className="p-2 text-center"
 						onClick={() => {
@@ -79,7 +79,7 @@ export default function App() {
 							width="24"
 						>
 							<path
-								fill="white"
+								fill="#3a3a3c"
 								d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"
 							></path>
 						</svg>
@@ -88,7 +88,7 @@ export default function App() {
 					<span className="p-2">&nbsp;</span>
 				</header>
 
-				<div>
+				<div className="mt-5">
 					<main className="grid grid-rows-6 gap-1 my-1">
 						{rows.map((word, index) => (
 							<WordRow

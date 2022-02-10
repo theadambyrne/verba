@@ -7,6 +7,8 @@ import WordRow from "./WordRow";
 export default function App() {
 	const state = useStore();
 	const [guess, setGuess, addGuessLetter] = useGuess();
+	const [winScreen, setWinScreen] = useState(false);
+	const [loseScreen, setLoseScreen] = useState(false);
 
 	const [showInvalidGuess, setInvalidGuess] = useState(false);
 	useEffect(() => {
@@ -26,6 +28,12 @@ export default function App() {
 		state.gameState = "playing";
 		state.keyboardLetterState = {};
 	}
+
+	useEffect(() => {
+		if (state.gameState === "lost") setLoseScreen(true);
+		if (state.gameState === "won") setWinScreen(true);
+	}, [state.gameState]);
+
 	useEffect(() => {
 		if (!isGameOver) {
 			if (guess.length === 0 && previousGuess?.length === WORD_LENGTH) {
@@ -88,7 +96,7 @@ export default function App() {
 							/>
 						))}
 					</main>
-					{state.gameState === "won" && (
+					{winScreen && (
 						<div
 							role="modal"
 							className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
@@ -98,7 +106,6 @@ export default function App() {
 							<h1 className="text-5xl font-bold text-center uppercase mt-5">
 								🏆 optime!
 							</h1>
-
 							<h1 className="  font-bold text-center uppercase ">
 								<div className="grid grid-rows-8 gap-2 my-2">
 									{state.rows.length}/6
@@ -114,23 +121,33 @@ export default function App() {
 											return <div key={resultString}>{resultString}</div>;
 										})}
 									</div>
-									<div
-										className="text-md lowercase mt-5 text-center  bg-green-500  text-white cursor-pointer rounded-full p-2  "
-										onClick={(e: any) => {
-											navigator.clipboard.writeText(
-												`🕊 Verba ${state.rows.length}/6 \n` +
-													resultsStrings.join("\n")
-											);
-											e.target.innerHTML = "Copied!";
-										}}
-									>
-										Copy Result
+									<div className="mt-5 p-5">
+										<div
+											className="text-md lowercase text-center  bg-green-500  text-white cursor-pointer rounded-full p-2  "
+											onClick={(e: any) => {
+												navigator.clipboard.writeText(
+													`🕊 Verba ${state.rows.length}/6 \n` +
+														resultsStrings.join("\n")
+												);
+												e.target.innerHTML = "Copied!";
+											}}
+										>
+											Copy Result
+										</div>
+										<div
+											className="text-md lowercase mt-2 text-center  bg-red-500  text-white cursor-pointer rounded-full p-2  "
+											onClick={() => {
+												setWinScreen(false);
+											}}
+										>
+											Back to game
+										</div>
 									</div>
 								</div>
 							</h1>
 						</div>
 					)}
-					{state.gameState === "lost" && (
+					{loseScreen && (
 						<div
 							role="modal"
 							className="opacity-95 absolute bg-gray-700 border border-gray-800 rounded-xl text-center
@@ -160,32 +177,40 @@ export default function App() {
 											return <div>{resultString}</div>;
 										})}
 									</div>
-									<div
-										className="text-md lowercase mt-5 text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
-										onClick={(e: any) => {
-											navigator.clipboard.writeText(
-												`🕊 Verba ${state.rows.length}/6 \n` +
-													resultsStrings.join("\n")
-											);
-											e.target.innerHTML = "Copied!";
-										}}
-									>
-										Copy Result
+									<div className="mt-5 p-5">
+										<div
+											className="text-md lowercase text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
+											onClick={(e: any) => {
+												navigator.clipboard.writeText(
+													`🕊 Verba ${state.rows.length}/6 \n` +
+														resultsStrings.join("\n")
+												);
+												e.target.innerHTML = "Copied!";
+											}}
+										>
+											Copy Result
+										</div>
+										<div
+											className="text-md lowercase mt-2 text-center  bg-red-500  text-white cursor-pointer rounded-full p-2  "
+											onClick={() => {
+												setLoseScreen(false);
+											}}
+										>
+											Back to game
+										</div>
 									</div>
 								</div>
 							</h1>
 						</div>
 					)}
 
-					{state.gameState === "playing" && (
-						<Keyboard
-							onClick={(key) => {
-								if (!isGameOver) {
-									addGuessLetter(key);
-								}
-							}}
-						/>
-					)}
+					<Keyboard
+						onClick={(key) => {
+							if (!isGameOver) {
+								addGuessLetter(key);
+							}
+						}}
+					/>
 				</div>
 			</div>
 		</div>

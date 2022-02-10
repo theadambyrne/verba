@@ -90,7 +90,7 @@ export default function App() {
 					<span className="p-2">&nbsp;</span>
 				</header>
 
-				<div className="mt-5">
+				<div className="mt-2">
 					<main className="grid grid-rows-6 gap-1 my-1">
 						{rows.map((word, index) => (
 							<WordRow

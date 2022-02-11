@@ -126,10 +126,12 @@ export default function App() {
 								</div>
 								<div className="mt-5 text-left">
 									<ul>
-										<li>🟩 Letter is correct</li>
-										<li>🟨 Letter is in the wrong position</li>
-										<li>⬛️ Letter is not in the word</li>
-										<li>❌ Only words in the word list may be used</li>
+										<li>&#129001; Letter is correct</li>
+										<li>&#129000; Letter is in the wrong position</li>
+										<li>&#11035; Letter is not in the word</li>
+										<li>
+											<i>Only words in the word list may be used</i>
+										</li>
 									</ul>
 								</div>
 								<div className="mt-5 p-5">
@@ -175,8 +177,9 @@ export default function App() {
 											className="text-md text-center  bg-green-500  text-white cursor-pointer rounded-full p-2  "
 											onClick={(e: any) => {
 												navigator.clipboard.writeText(
-													`Verba ${state.rows.length}/6 \n` +
-														resultsStrings.join("\n")
+													`#verba ${state.rows.length}/6 \n` +
+														resultsStrings.join("\n") +
+														"https://verba.vercel.app"
 												);
 												e.target.innerHTML = "Copied!";
 											}}
@@ -231,8 +234,9 @@ export default function App() {
 											className="text-md text-center  bg-yellow-500  text-white cursor-pointer rounded-full p-2  "
 											onClick={(e: any) => {
 												navigator.clipboard.writeText(
-													`Verba ${state.rows.length}/6 \n` +
-														resultsStrings.join("\n")
+													`#verba ${state.rows.length}/6 \n` +
+														resultsStrings.join("\n") +
+														"https://verba.vercel.app"
 												);
 												e.target.innerHTML = "Copied!";
 											}}

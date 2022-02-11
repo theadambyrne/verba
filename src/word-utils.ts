@@ -76,7 +76,7 @@ export function getRandomWord(): string {
 
 function daysSince() {
 	let current: Date = new Date();
-	let previous: Date = new Date("02/07/2022");
+	let previous: Date = new Date("02/11/2022");
 	return Math.floor((Number(current) - Number(previous) - 1) / 86400000);
 }
 export function isValidWord(word: string): boolean {

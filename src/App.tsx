@@ -179,7 +179,7 @@ export default function App() {
 												navigator.clipboard.writeText(
 													`#verba ${state.rows.length}/6 \n` +
 														resultsStrings.join("\n") +
-														"https://verba.vercel.app"
+														" \n https://verba.vercel.app"
 												);
 												e.target.innerHTML = "Copied!";
 											}}
@@ -236,7 +236,7 @@ export default function App() {
 												navigator.clipboard.writeText(
 													`#verba ${state.rows.length}/6 \n` +
 														resultsStrings.join("\n") +
-														"https://verba.vercel.app"
+														" \n https://verba.vercel.app"
 												);
 												e.target.innerHTML = "Copied!";
 											}}

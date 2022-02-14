@@ -266,6 +266,15 @@ export default function App() {
 					/>
 				</div>
 			</div>
+			<div className="flex justify-center">
+				<a
+					className="text-gray-600 text-sm"
+					href="https://twitter.com/adambxrne"
+					target="_blank"
+				>
+					@adambxrne
+				</a>
+			</div>
 		</div>
 	);
 }
